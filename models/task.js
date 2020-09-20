@@ -7,11 +7,62 @@ const taskSchema = new mongoose.Schema({
         min: 6,
         max: 255
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    super: {
+        type: Boolean,
+        required: true
     },
-    dateCreated: {
+    children: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'Task'
+        }
+    ],
+    status: {
+        type: String,
+        required: true,
+        min: 2,
+        max: 255
+    },
+    actions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: 'ActionTask'
+        }
+    ],
+    durationMins: {
+        type: Number
+    },
+    difficulty: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5
+    },
+    importance: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5
+    },
+    color: {
+        type: String,
+        required: true,
+        min: 6,
+        max: 25
+    },
+    day: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Day'
+    },
+    marks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'MarkTask'
+        }
+    ],
+    created: {
         type: Date,
         default: Date.now
     }
