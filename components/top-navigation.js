@@ -1,5 +1,6 @@
 import { Menu } from 'antd';
 import { CheckCircleOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import Link from 'next/link'
 
 const { SubMenu } = Menu;
 
@@ -25,8 +26,16 @@ class TopNavigation extends React.Component {
         </Menu.Item>
     <SubMenu icon={<CheckCircleOutlined />} title="Tasks">
           <Menu.ItemGroup>
-            <Menu.Item key="setting:1">Tasks by days</Menu.Item>
-            <Menu.Item key="setting:2">All tasks</Menu.Item>
+            <Menu.Item key="tasksByDays">
+            <Link href="/task-by-days">
+              <a>Tasks by days</a>
+            </Link>
+              </Menu.Item>
+            <Menu.Item key="alltasks">
+            <Link href="/tasks/all">
+              <a>All tasks</a>
+            </Link>
+              </Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
         <Menu.Item key="alipay">

@@ -28,7 +28,9 @@ export default function Layout({ children, home }) {
 
 
       <div className={styles.container}>
+
       <TopNavigation />
+      
         <header className={styles.header}>
           {home ? (
             <>

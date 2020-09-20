@@ -25,3 +25,20 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.list-tasks__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.list-tasks__container--drop {
+  background-color: lightblue;
+}
+.list-tasks__task {
+  border: 1px solid gray;
+  padding: 0px 10px 0px 10px;
+  border-radius: 3px;
+  width: fit-content;
+  cursor: grab;
+  margin-top: 5px;
+}

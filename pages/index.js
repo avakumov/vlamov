@@ -18,8 +18,8 @@ export default function Home({allPostsData, allTasksData}) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section>
 
+      <section>
       <ul className={utilStyles.list}>
         {allTasksData.map(({id, date, title, url, percent}) => (
           <li className={utilStyles.listItem} key={id}>
@@ -30,6 +30,7 @@ export default function Home({allPostsData, allTasksData}) {
         ))}
          </ul>
       </section>
+
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
@@ -46,6 +47,7 @@ export default function Home({allPostsData, allTasksData}) {
           ))}
         </ul>
       </section>
+      
     </Layout>
   )
 }
