@@ -1,7 +1,8 @@
 module.exports = {
     plugins: ['simple-import-sort'],
     root: true,
-    parser: '@typescript-eslint/parser',
+    parser: 'babel-eslint',
+    //  parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
@@ -21,18 +22,18 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
+        // 'plugin:@typescript-eslint/eslint-recommended',
+        //'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
-        'prettier/@typescript-eslint',
-        'plugin:prettier/recommended'   // Make sure this is always the last element in the array.
+        //'prettier/@typescript-eslint',
+        'plugin:prettier/recommended' // Make sure this is always the last element in the array.
     ],
     rules: {
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
+        //'@typescript-eslint/explicit-function-return-type': 'off',
         'simple-import-sort/sort': 'error',
         'jsx-a11y/anchor-is-valid': [
             'error',
@@ -43,4 +44,4 @@ module.exports = {
             }
         ]
     }
-};
+}

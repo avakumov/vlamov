@@ -1,44 +1,44 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
-  font-size: 18px;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a {
-  color: #27a522;
-  text-decoration: none;
+    color: #27a522;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 img {
-  max-width: 100%;
-  display: block;
+    max-width: 100%;
+    display: block;
 }
 
 .list-tasks__container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .list-tasks__container--drop {
-  background-color: lightblue;
+    background-color: lightblue;
 }
 .list-tasks__task {
-  border: 1px solid gray;
-  padding: 0px 10px 0px 10px;
-  border-radius: 3px;
-  width: fit-content;
-  cursor: grab;
-  margin-top: 5px;
+    border: 1px solid gray;
+    padding: 0px 10px 0px 10px;
+    border-radius: 3px;
+    width: fit-content;
+    cursor: grab;
+    margin-top: 5px;
 }

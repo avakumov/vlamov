@@ -5,16 +5,16 @@ const taskSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6,
-        max: 255,
+        max: 255
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User'
     },
     dateCreated: {
         type: Date,
-        default: Date.now,
-    },
+        default: Date.now
+    }
 })
 
 module.exports = mongoose.model('Task', taskSchema)
