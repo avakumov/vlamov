@@ -1,37 +1,18 @@
-import { Progress } from 'antd'
 import Head from 'next/head'
 import Link from 'next/link'
 
 import Date from '../components/date'
 import Layout, { siteTitle } from '../components/layout'
-//import { Task } from '../components/task/task'
 import { getSortedPostsData } from '../lib/posts'
-import { getSortedTasksData } from '../lib/tasks'
 import utilStyles from '../styles/utils.module.css'
 
-// const tasks = [
-//     { id: 1, title: 'React query', percent: 30 },
-//     { id: 1, title: 'Next js', percent: 55 }
-// ]
 
-export default function Home({ allPostsData, allTasksData }) {
+export default function Home({ allPostsData }) {
     return (
         <Layout home>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-
-            <section>
-                <ul className={utilStyles.list}>
-                    {allTasksData.map(({ id, date, title, url, percent }) => (
-                        <li className={utilStyles.listItem} key={id}>
-                            {title}
-                            <a href={url}> link </a>
-                            <Progress percent={percent} />({date})
-                        </li>
-                    ))}
-                </ul>
-            </section>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -55,11 +36,9 @@ export default function Home({ allPostsData, allTasksData }) {
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData()
-    const allTasksData = getSortedTasksData()
     return {
         props: {
-            allPostsData,
-            allTasksData
+            allPostsData
         }
     }
 }

@@ -1,0 +1,13 @@
+const MOVE_TASK = 'MOVE_TASK'
+const ADD_TASK = 'ADD_TASK'
+const SELECTED_DAYS = 'SELECTED_DAYS'
+const ADD_TASK_TO_AWARD = 'ADD_TASK_TO_AWARD'
+const ADD_DAY = 'ADD_DAY'
+
+export const TASKS = {
+    MOVE_TASK,
+    ADD_TASK,
+    SELECTED_DAYS,
+    ADD_TASK_TO_AWARD,
+    ADD_DAY
+}

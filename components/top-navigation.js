@@ -1,9 +1,7 @@
-import { AppstoreOutlined, CheckCircleOutlined, MailOutlined } from '@ant-design/icons'
+import { CheckCircleOutlined, MailOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import Link from 'next/link'
 import React from 'react'
-
-const { SubMenu } = Menu
 
 class TopNavigation extends React.Component {
     state = {
@@ -19,30 +17,25 @@ class TopNavigation extends React.Component {
         const { current } = this.state
         return (
             <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+                <Menu.Item key="home">
+                    <Link href="/">
+                        <img
+                            src="/images/profile.jpg"
+                            alt="home"
+                            className="top-navigation__home"
+                        />
+                    </Link>
+                </Menu.Item>
                 <Menu.Item key="contacts" icon={<MailOutlined />}>
-                    Contacts
+                    <Link href="/contacts">
+                        <a>Contacts</a>
+                    </Link>
                 </Menu.Item>
-                <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
-                    Disabled
-                </Menu.Item>
-                <SubMenu icon={<CheckCircleOutlined />} title="Tasks">
-                    <Menu.ItemGroup>
-                        <Menu.Item key="tasksByDays">
-                            <Link href="/task-by-days">
-                                <a>Tasks by days</a>
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key="alltasks">
-                            <Link href="/tasks/all">
-                                <a>All tasks</a>
-                            </Link>
-                        </Menu.Item>
-                    </Menu.ItemGroup>
-                </SubMenu>
-                <Menu.Item key="alipay">
-                    <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-                        Navigation Four - Link
-                    </a>
+
+                <Menu.Item key="tasks" icon={<CheckCircleOutlined />}>
+                    <Link href="/tasks">
+                        <a>Tasks</a>
+                    </Link>
                 </Menu.Item>
             </Menu>
         )

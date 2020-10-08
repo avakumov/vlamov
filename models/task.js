@@ -7,6 +7,10 @@ const taskSchema = new mongoose.Schema({
         min: 6,
         max: 255
     },
+    description: {
+        type: String,
+        max: 2550
+    },
     super: {
         type: Boolean,
         required: true
