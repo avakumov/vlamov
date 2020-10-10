@@ -1,3 +1,4 @@
 export default (req, res) => {
-    res.status(200).json({ text: 'Hello' })
+    const db = process.env.MONGODB_CONNECT
+    res.status(200).json({ db: `${db}` })
 }

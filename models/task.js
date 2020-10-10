@@ -12,8 +12,7 @@ const taskSchema = new mongoose.Schema({
         max: 2550
     },
     super: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     children: [
         {
@@ -40,19 +39,19 @@ const taskSchema = new mongoose.Schema({
     },
     difficulty: {
         type: Number,
-        required: true,
+        default: 3,
         min: 1,
         max: 5
     },
     importance: {
         type: Number,
-        required: true,
+        default: 3,
         min: 1,
         max: 5
     },
     color: {
         type: String,
-        required: true,
+        default: '#ffffff',
         min: 6,
         max: 25
     },
