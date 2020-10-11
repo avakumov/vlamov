@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
-const DayTypeSchema = new mongoose.Schema({
+const TypeDaySchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     title: {
         type: String,
         required: true
@@ -25,4 +30,4 @@ const DayTypeSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('DayType', DayTypeSchema)
+module.exports = mongoose.model('TypeDay', TypeDaySchema)

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const actionTaskSchema = new mongoose.Schema({
+const AttachmentSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },
-    action: {
+    message: {
         required: true,
         type: String
     },
@@ -16,4 +16,4 @@ const actionTaskSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('ActionTask', actionTaskSchema)
+module.exports = mongoose.model('Attachment', AttachmentSchema)
