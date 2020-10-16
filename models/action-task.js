@@ -16,4 +16,4 @@ const actionTaskSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('ActionTask', actionTaskSchema)
+export default mongoose.models.ActionTask || mongoose.model('ActionTask', actionTaskSchema)

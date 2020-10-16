@@ -26,7 +26,7 @@ img {
     display: block;
 }
 .tasks-calendar__container {
-  display: flex;
+    display: flex;
 }
 
 .list-tasks__container {
@@ -51,26 +51,24 @@ img {
     overflow: hidden !important;
     text-overflow: ellipsis;
     text-align: center;
-    
 }
 
 .calendar__container {
-  background-color: aliceblue;
-  display: flex;
-  flex-direction: column;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
 }
 .calendar__container_tasks {
-  display: flex;
-  align-content: flex-start;
-  align-items: center;
-  width: 600px;
-  height: 30px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-
+    display: flex;
+    align-content: flex-start;
+    align-items: center;
+    width: 600px;
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
 }
 .calendar__container_tasks--isOver {
-  background-color: lightblue;
+    background-color: lightblue;
 }
 
 .award__container {
@@ -87,13 +85,12 @@ img {
     vertical-align: middle;
 }
 
-
 .award__drop-container--isOver {
     border: 5px solid green;
     border-radius: 50%;
 }
 
- .award__image {
+.award__image {
     border-radius: 50%;
     object-fit: cover;
     width: 90px;
@@ -108,7 +105,7 @@ img {
     font-size: 25px;
     font-weight: 700;
     -webkit-text-stroke: 1px rgb(147, 245, 176);
-  }
+}
 
 .top-navigation__home {
     border-radius: 50%;
@@ -125,9 +122,8 @@ img {
 
 .action__icon {
     font-size: 25px;
-    
 }
-.action__drop-container  {
+.action__drop-container {
     background-color: greenyellow;
     padding: 5px;
     cursor: pointer;

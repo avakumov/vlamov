@@ -1,23 +1,27 @@
 import { Button } from 'antd'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
+import { useMutation, useQueryCache } from 'react-query'
 
+import { useTasks } from '../../hooks/useTasks'
+import { action } from '../../lib/actions'
 import { ItemTypes } from '../../lib/items-draggable'
-import { DispatchContext, StateContext } from '../../pages/tasks'
-import { TASKS } from '../../state-manager/constants'
 import { NewTaskModal } from './new-task-modal'
 import { Task } from './task'
+
 //dragging task
 
 //container drops tasks list
 const ListTasks = () => {
-    const state = useContext(StateContext)
-    const dispatch = useContext(DispatchContext)
+    const queryCache = useQueryCache()
+    const { status, data, error, isFetching } = useTasks()
+    const [mutateAddTask] = useMutation(action.addTask)
+
     const [modal, setModal] = useState(false)
     const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.TASK,
         drop: (item) => {
-            dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: -1 } })
+            // dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: -1 } })
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
@@ -27,9 +31,15 @@ const ListTasks = () => {
     const handleClose = () => {
         setModal(false)
     }
-    const addTask = (values) => {
+    const addTask = async (values) => {
         setModal(false)
-        dispatch({ type: TASKS.ADD_TASK, payload: values.task })
+
+        try {
+            await mutateAddTask(values.task)
+            queryCache.invalidateQueries('tasks')
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -44,11 +54,13 @@ const ListTasks = () => {
             <Button type="primary" onClick={() => setModal(true)}>
                 +
             </Button>
-            {state.tasks
-                .filter((t) => !t.day)
-                .map((task) => (
-                    <Task key={task.id} task={task} />
-                ))}
+            {status === 'loading' ? (
+                'Loading...'
+            ) : status === 'error' ? (
+                <span>Error: {error.message}</span>
+            ) : (
+                data.data.filter((t) => !t.day).map((task) => <Task key={task._id} task={task} />)
+            )}
         </div>
     )
 }

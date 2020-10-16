@@ -30,4 +30,4 @@ const TypeDaySchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('TypeDay', TypeDaySchema)
+export default mongoose.models.TypeDay || mongoose.model('TypeDay', TypeDaySchema)

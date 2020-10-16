@@ -23,4 +23,4 @@ const DaySchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Day', DaySchema)
+export default mongoose.models.Day || mongoose.model('Day', DaySchema)

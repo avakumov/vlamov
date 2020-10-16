@@ -8,7 +8,7 @@ export const Task = ({ task }) => {
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.TASK,
-            id: task.id
+            id: task._id
         },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
@@ -19,7 +19,7 @@ export const Task = ({ task }) => {
             ref={drag}
             className="list-tasks__task"
             style={{ width: `${task.durationMins}px`, backgroundColor: `${task.color}` }}>
-            <Tooltip title={task.description} mouseEnterDelay="1">
+            <Tooltip title={task.title} mouseEnterDelay="0.5">
                 {task.title}
             </Tooltip>
         </div>

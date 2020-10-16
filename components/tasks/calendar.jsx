@@ -1,19 +1,39 @@
 import { Button, Table } from 'antd'
 import moment from 'moment'
-import React, { useContext } from 'react'
+import React from 'react'
 import { useDrop } from 'react-dnd'
 
 import { ItemTypes } from '../../lib/items-draggable'
-import { DispatchContext, StateContext } from '../../pages/tasks'
-import { TASKS } from '../../state-manager/constants'
 import { Task } from './task'
+const daysColumns = [
+    {
+        title: 'Date',
+        dataIndex: 'date'
+    },
+    {
+        title: 'Tasks',
+        dataIndex: 'tasks'
+    },
+    {
+        title: 'Duration',
+        dataIndex: 'duration'
+    },
+    {
+        title: 'Avarage difficulty',
+        dataIndex: 'avarageDifficulty'
+    },
+    {
+        title: 'Avarage Importance',
+        dataIndex: 'avarageImportance'
+    }
+]
 
 //In table row special tasks container
 const ContainerTasks = ({ tasks, dayId, dispatch }) => {
     const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.TASK,
         drop: (item) => {
-            dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: dayId } })
+            //dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: dayId } })
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
@@ -35,13 +55,10 @@ const ContainerTasks = ({ tasks, dayId, dispatch }) => {
 }
 
 const Calendar = () => {
-    const { days, tasks, daysColumns } = useContext(StateContext)
-    const dispatch = useContext(DispatchContext)
-
     // rowSelection object indicates the need for row selection
     const rowSelection = {
         onChange: (selectedRowKeys) => {
-            dispatch({ type: TASKS.SELECTED_DAYS, payload: selectedRowKeys })
+            // dispatch({ type: TASKS.SELECTED_DAYS, payload: selectedRowKeys })
         },
         getCheckboxProps: (record) => ({
             disabled: record.disabled, // Column configuration not to be checked
@@ -50,7 +67,7 @@ const Calendar = () => {
     }
 
     //insert to days.tasks container with draggable tasks
-    const preparedDataTasks = days.map((day) => {
+    const preparedDataTasks = [].map((day) => {
         const copyDay = { ...day }
         copyDay.date = moment(day.date).format('DD.MM.YYYY')
         const filteredTasks = tasks.filter((t) => t.day === day.id)
@@ -89,7 +106,7 @@ const Calendar = () => {
     })
 
     const addDay = () => {
-        dispatch({ type: TASKS.ADD_DAY })
+        //dispatch({ type: TASKS.ADD_DAY })
     }
     const AddDayButton = () => {
         return <Button onClick={addDay}>+</Button>

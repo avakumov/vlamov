@@ -85,7 +85,7 @@ const options = {
          */
         session: async (session, user) => {
             //session.customSessionProperty = 'bar'
-            session.id = user.id
+            session.userId = user.id
             return Promise.resolve(session)
         },
 

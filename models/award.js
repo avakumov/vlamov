@@ -26,4 +26,4 @@ const AwardSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Award', AwardSchema)
+export default mongoose.models.Award || mongoose.model('Award', AwardSchema)

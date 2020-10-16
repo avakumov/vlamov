@@ -2,19 +2,16 @@ import React, { useContext } from 'react'
 import { useDrop } from 'react-dnd'
 
 import { ItemTypes } from '../../lib/items-draggable'
-import { DispatchContext } from '../../pages/tasks'
 import { TASKS } from '../../state-manager/constants'
 
 const Award = ({ award }) => {
-    const dispatch = useContext(DispatchContext)
-
     const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.TASK,
         drop: (item) => {
-            dispatch({
-                type: TASKS.ADD_TASK_TO_AWARD,
-                payload: { taskId: item.id, awardId: award.id }
-            })
+            // dispatch({
+            //     type: TASKS.ADD_TASK_TO_AWARD,
+            //     payload: { taskId: item.id, awardId: award.id }
+            // })
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()

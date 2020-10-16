@@ -2,38 +2,35 @@ import Head from 'next/head'
 import React from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { useImmerReducer } from 'use-immer'
+import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query-devtools'
 
 import Layout from '../../components/layout'
 import { Calendar } from '../../components/tasks/calendar'
-import { Actions } from '../../components/tasks/list-actions'
+import { DropAreas } from '../../components/tasks/drop-areas'
 import { ListAwards } from '../../components/tasks/list-awards'
 import { ListTasks } from '../../components/tasks/list-tasks'
-import { initState } from '../../state-manager/init-state'
-import { reducers } from '../../state-manager/reducers'
-export const StateContext = React.createContext()
-export const DispatchContext = React.createContext()
+
+const queryCache = new QueryCache()
 
 export default function Tasks() {
-    const [state, dispatch] = useImmerReducer(reducers.tasks, initState.tasks)
     return (
-        <Layout>
-            <Head>
-                <title>Tasks</title>
-            </Head>{' '}
-            <DndProvider backend={HTML5Backend}>
-                <DispatchContext.Provider value={dispatch}>
-                    <StateContext.Provider value={state}>
-                        <ListAwards />
-                        <Actions />
-                        <div className="tasks-calendar__container">
-                            <ListTasks />
-                            <Calendar />
-                        </div>
-                    </StateContext.Provider>
-                </DispatchContext.Provider>
-            </DndProvider>
-        </Layout>
+        <ReactQueryCacheProvider queryCache={queryCache}>
+            <Layout>
+                <Head>
+                    <title>Tasks</title>
+                </Head>{' '}
+                <DndProvider backend={HTML5Backend}>
+                    <ListAwards />
+                    <DropAreas />
+                    <div className="tasks-calendar__container">
+                        <ListTasks />
+                        <Calendar />
+                    </div>
+                </DndProvider>
+            </Layout>
+            <ReactQueryDevtools initialIsOpen />
+        </ReactQueryCacheProvider>
     )
 }
 
