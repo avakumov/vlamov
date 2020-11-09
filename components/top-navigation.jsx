@@ -9,8 +9,8 @@ const TopNavigation = () => {
     const [session, loading] = useSession()
 
     const handleClick = (e) => {
-        console.log('click ', e)
-        this.setState({ current: e.key })
+        console.log('click: ', e.key)
+        setCurrent(e.key)
     }
 
     return (

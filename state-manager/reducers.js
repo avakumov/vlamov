@@ -1,10 +1,15 @@
 import moment from 'moment'
 
-import { TASKS } from './constants'
+import { TASKS_APP } from './constants'
 
 function tasksReducer(draft, action) {
     switch (action.type) {
-        case TASKS.MOVE_TASK: {
+        case TASKS_APP.GET_BOOKS_SUCCESS: {
+            console.log('reducer getTasks response: ', action.payload)
+            draft.tasks = action.payload
+            return
+        }
+        case TASKS_APP.MOVE_TASK: {
             const { dayId, taskId } = action.payload
             const indexTask = draft.tasks.findIndex((t) => t.id === taskId)
             if (dayId === -1) {
@@ -14,11 +19,11 @@ function tasksReducer(draft, action) {
             }
             return
         }
-        case TASKS.SELECTED_ROWS: {
+        case TASKS_APP.SELECTED_ROWS: {
             draft.selectedRows = action.payload
             return
         }
-        case TASKS.ADD_TASK: {
+        case TASKS_APP.ADD_TASK: {
             const {
                 title,
                 description,
@@ -40,7 +45,7 @@ function tasksReducer(draft, action) {
             draft.tasks.push(newTask)
             return
         }
-        case TASKS.ADD_TASK_TO_AWARD: {
+        case TASKS_APP.ADD_TASK_TO_AWARD: {
             const { taskId, awardId } = action.payload
             const indexAward = draft.awards.findIndex((a) => a.id === awardId)
             if (draft.awards[indexAward].tasks.find((task) => task.id === taskId)) {
@@ -50,7 +55,7 @@ function tasksReducer(draft, action) {
             draft.awards[indexAward].tasks.push(draft.tasks[indexTask])
             return
         }
-        case TASKS.ADD_DAY: {
+        case TASKS_APP.ADD_DAY: {
             const lastDate = draft.days.reduce((acc, current) => {
                 if (current.date > acc) return current.date
                 return acc

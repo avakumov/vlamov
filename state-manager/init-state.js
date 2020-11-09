@@ -144,7 +144,7 @@ const daysColumns = [
 export const initState = {
     tasks: {
         days,
-        tasks,
+        tasks: [],
         awards,
         selectedDays: [],
         daysColumns

@@ -8,7 +8,8 @@ export const Task = ({ task }) => {
     const [{ isDragging }, drag] = useDrag({
         item: {
             type: ItemTypes.TASK,
-            id: task.id
+            id: task.id,
+            task: task
         },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()

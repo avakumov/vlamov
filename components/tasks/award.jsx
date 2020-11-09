@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd'
 
 import { ItemTypes } from '../../lib/items-draggable'
 import { DispatchContext } from '../../pages/tasks'
-import { TASKS } from '../../state-manager/constants'
+import { TASKS_APP } from '../../state-manager/constants'
 
 const Award = ({ award }) => {
     const dispatch = useContext(DispatchContext)
@@ -12,7 +12,7 @@ const Award = ({ award }) => {
         accept: ItemTypes.TASK,
         drop: (item) => {
             dispatch({
-                type: TASKS.ADD_TASK_TO_AWARD,
+                type: TASKS_APP.ADD_TASK_TO_AWARD,
                 payload: { taskId: item.id, awardId: award.id }
             })
         },

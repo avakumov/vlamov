@@ -4,7 +4,7 @@ import { useDrop } from 'react-dnd'
 
 import { ItemTypes } from '../../lib/items-draggable'
 import { DispatchContext, StateContext } from '../../pages/tasks'
-import { TASKS } from '../../state-manager/constants'
+import { TASKS_APP } from '../../state-manager/constants'
 import { NewTaskModal } from './new-task-modal'
 import { Task } from './task'
 //dragging task
@@ -17,7 +17,7 @@ const ListTasks = () => {
     const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.TASK,
         drop: (item) => {
-            dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: -1 } })
+            dispatch({ type: TASKS_APP.MOVE_TASK, payload: { taskId: item.id, dayId: -1 } })
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
@@ -29,7 +29,7 @@ const ListTasks = () => {
     }
     const addTask = (values) => {
         setModal(false)
-        dispatch({ type: TASKS.ADD_TASK, payload: values.task })
+        dispatch({ type: TASKS_APP.ADD_TASK, payload: values.task })
     }
 
     return (

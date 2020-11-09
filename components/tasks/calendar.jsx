@@ -5,7 +5,7 @@ import { useDrop } from 'react-dnd'
 
 import { ItemTypes } from '../../lib/items-draggable'
 import { DispatchContext, StateContext } from '../../pages/tasks'
-import { TASKS } from '../../state-manager/constants'
+import { TASKS_APP } from '../../state-manager/constants'
 import { Task } from './task'
 
 //In table row special tasks container
@@ -13,7 +13,7 @@ const ContainerTasks = ({ tasks, dayId, dispatch }) => {
     const [{ isOver }, drop] = useDrop({
         accept: ItemTypes.TASK,
         drop: (item) => {
-            dispatch({ type: TASKS.MOVE_TASK, payload: { taskId: item.id, dayId: dayId } })
+            dispatch({ type: TASKS_APP.MOVE_TASK, payload: { taskId: item.id, dayId: dayId } })
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()
@@ -41,7 +41,7 @@ const Calendar = () => {
     // rowSelection object indicates the need for row selection
     const rowSelection = {
         onChange: (selectedRowKeys) => {
-            dispatch({ type: TASKS.SELECTED_DAYS, payload: selectedRowKeys })
+            dispatch({ type: TASKS_APP.SELECTED_DAYS, payload: selectedRowKeys })
         },
         getCheckboxProps: (record) => ({
             disabled: record.disabled, // Column configuration not to be checked
@@ -89,7 +89,7 @@ const Calendar = () => {
     })
 
     const addDay = () => {
-        dispatch({ type: TASKS.ADD_DAY })
+        dispatch({ type: TASKS_APP.ADD_DAY })
     }
     const AddDayButton = () => {
         return <Button onClick={addDay}>+</Button>
